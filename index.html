@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minglee Digital Diary Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-label="Minglee digital diary prototype">
+      <audio class="bgm-audio" src="bgm-beach-evening.mp3" loop preload="auto" playsinline></audio>
+      <button class="music-toggle" type="button" aria-label="BGM 재생" aria-pressed="false">
+        <span class="music-icon" aria-hidden="true">♪</span>
+        <span class="music-text">BGM 켜기</span>
+      </button>
+
+      <button class="edge edge-left" type="button" aria-label="이전 페이지"></button>
+      <button class="edge edge-right" type="button" aria-label="다음 페이지"></button>
+
+      <section class="diary" aria-live="polite">
+        <div class="page-stage">
+          <div class="paper-shadow"></div>
+
+          <div class="book-spread" aria-label="위클리 속지">
+            <div class="weekly-sheet weekly-left">
+              <img class="weekly-page" src="weekly-pages-real/page-01.png" alt="" draggable="false" />
+              <div class="sticker-layer" aria-label="왼쪽 페이지 스티커"></div>
+              <div class="note-layer" aria-label="왼쪽 페이지 작성 영역"></div>
+            </div>
+
+            <div class="weekly-sheet weekly-right">
+              <img class="weekly-page" src="weekly-pages-real/page-02.png" alt="" draggable="false" />
+              <div class="sticker-layer" aria-label="오른쪽 페이지 스티커"></div>
+              <div class="note-layer" aria-label="오른쪽 페이지 작성 영역"></div>
+            </div>
+
+            <div class="turn-page" aria-hidden="true">
+              <img class="turn-page-image" src="weekly-pages-real/page-01.png" alt="" draggable="false" />
+            </div>
+          </div>
+
+          <img
+            class="cover"
+            src="diary-cover-cutout.png"
+            alt="Minglee 2026 다이어리 표지"
+            draggable="false"
+          />
+          <button class="open-cover" type="button" aria-label="표지 열기"></button>
+        </div>
+
+        <div class="controls" aria-label="페이지 상태">
+          <button class="mini-button" type="button" data-action="close">닫기</button>
+          <button class="sticker-toggle" type="button" aria-expanded="false">스티커</button>
+          <button class="write-button" type="button" data-action="write">일기를 작성하시오</button>
+          <div class="page-dots" aria-hidden="true"></div>
+          <p class="page-label">표지</p>
+        </div>
+      </section>
+
+      <section class="sticker-panel" aria-hidden="true" aria-label="스티커 선택">
+        <div class="sticker-panel-head">
+          <strong>스티커</strong>
+          <button class="sticker-close" type="button" aria-label="스티커 닫기">×</button>
+        </div>
+        <div class="sticker-grid"></div>
+      </section>
+
+      <section class="entry-modal" aria-hidden="true" aria-label="일기 작성 편집창">
+        <div class="entry-panel">
+          <div class="entry-header">
+            <div>
+              <p class="entry-kicker">Memory Pin</p>
+              <h2 class="entry-title">일상 사진 기록</h2>
+            </div>
+            <button class="entry-close" type="button" aria-label="편집창 닫기">×</button>
+          </div>
+
+          <div class="entry-body">
+            <div class="photo-board">
+              <img
+                class="entry-photo"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                alt=""
+                draggable="false"
+              />
+              <p class="photo-empty">사진을 업로드한 뒤 원하는 지점을 눌러 핀을 꽂아보세요.</p>
+              <div class="pin-layer" aria-label="사진 핀 영역"></div>
+            </div>
+
+            <aside class="entry-tools">
+              <label class="upload-button">
+                사진 업로드
+                <input class="entry-photo-input" type="file" accept="image/*" />
+              </label>
+              <button class="remove-photo" type="button">사진 삭제</button>
+
+              <div class="emotion-tools" aria-label="감정 핀 색상">
+                <button class="emotion-pin is-selected" type="button" data-color="red">
+                  <span></span>화남
+                </button>
+                <button class="emotion-pin" type="button" data-color="blue">
+                  <span></span>슬픔/위로
+                </button>
+                <button class="emotion-pin" type="button" data-color="green">
+                  <span></span>평범
+                </button>
+                <button class="emotion-pin" type="button" data-color="yellow">
+                  <span></span>즐거움
+                </button>
+                <button class="emotion-pin" type="button" data-color="purple">
+                  <span></span>기대/설렘
+                </button>
+              </div>
+
+              <label class="pin-note-label">
+                선택한 핀 메모
+                <textarea class="pin-note" maxlength="140" placeholder="그 순간의 감정을 짧게 적어주세요."></textarea>
+              </label>
+
+              <button class="delete-pin" type="button">선택 핀 삭제</button>
+              <p class="entry-hint">사진 위를 누르면 선택한 감정 색의 핀이 추가됩니다.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
